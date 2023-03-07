@@ -376,7 +376,14 @@ public class XmppChatManager : MonoBehaviour
     {
         if (msg.Body != null && msg.Body.Length > 0)
         {
-            incomingGroupMessages.AddLast(msg);
+            if (msg.From.Bare.Contains(Config.MUC_MSG_KEYWORD))
+            {
+                incomingGroupMessages.AddLast(msg);
+            }
+            else
+            {
+                // ----- Add new message into Private Conversation collection
+            }
         }
     }
 

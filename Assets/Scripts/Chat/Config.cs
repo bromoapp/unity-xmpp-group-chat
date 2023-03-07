@@ -11,5 +11,7 @@
         public static string XMLNS_DISCO_INFO = "http://jabber.org/protocol/disco#info";
         public static string XMLNS_MUC_SUB = "urn:xmpp:mucsub:0";
         public static string XMLNS_MUC_USER = "http://jabber.org/protocol/muc#user";
+
+        public static string MUC_MSG_KEYWORD = "conference";
     }
 }

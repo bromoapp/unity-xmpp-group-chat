@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D9A70FAA-9B6A-3281-0A5D-59603D85AEFA}</ProjectGuid>
+    <ProjectGuid>{1EE566F1-B81C-BB32-138D-4DF609A57672}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -340,7 +340,6 @@
     <Compile Include="Assets\Xmpp\Xml\Dom\NodeList.cs" />
     <Compile Include="Assets\Xmpp\Net\Dns\Question.cs" />
     <Compile Include="Assets\Xmpp\protocol\extensions\commands\Action.cs" />
-    <Compile Include="Assets\Scripts\Chat\XmppChatManagerBak.cs" />
     <Compile Include="Assets\Xmpp\protocol\server\Presence.cs" />
     <Compile Include="Assets\Xmpp\protocol\extensions\jivesoftware\phone\PhoneAction.cs" />
     <Compile Include="Assets\Xmpp\Util\Runtime.cs" />
