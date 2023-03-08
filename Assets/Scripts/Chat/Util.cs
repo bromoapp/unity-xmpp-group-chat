@@ -8,12 +8,20 @@ namespace Assets.Scripts
     {
         public static UserProfile ParseProfileFromJid(string jid)
         {
-            string[] data = jid.Split('_');
-            UserProfile profile = new UserProfile();
-            profile.FirstName = FirstCharToUpper(data[0]);
-            profile.LastName = FirstCharToUpper(data[1]);
-            profile.Email = data[2] + "@" + data[3] + "." + data[4];
-            return profile;
+            try
+            {
+                string[] data = jid.Split('_');
+                UserProfile profile = new UserProfile();
+                profile.FirstName = FirstCharToUpper(data[0]);
+                profile.LastName = FirstCharToUpper(data[1]);
+                profile.Email = data[2] + "@" + data[3] + "." + data[4];
+                return profile;
+            }
+            catch (Exception e)
+            {
+                // Ignore false format
+                return null;
+            }
         }
 
         public static GroupInfo ParseGroupFromJid(string jid)

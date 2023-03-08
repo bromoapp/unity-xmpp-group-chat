@@ -1964,7 +1964,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1266328986}
         m_TargetAssemblyTypeName: XmppChatManager, Assembly-CSharp
-        m_MethodName: OnSendBtnClicked
+        m_MethodName: OnSendGroupChatBtnClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2533,9 +2533,15 @@ MonoBehaviour:
   GroupListContent: {fileID: 827354629}
   GroupItemObj: {fileID: 1059021353663658075, guid: de771396eb3635546b6c2c91d300f523, type: 3}
   GroupChatText: {fileID: 1416723373}
+  GroupChatInput: {fileID: 673459839}
+  ChatBoardContent: {fileID: 0}
+  ChatItemObj: {fileID: 0}
+  FriendsListContent: {fileID: 0}
+  FriendItemObj: {fileID: 0}
+  ChatWithText: {fileID: 0}
+  ChatInput: {fileID: 0}
   UsernameInput: {fileID: 2077352305}
   PasswordInput: {fileID: 21576548}
-  GroupChatInput: {fileID: 673459839}
 --- !u!1 &1269355850
 GameObject:
   m_ObjectHideFlags: 0

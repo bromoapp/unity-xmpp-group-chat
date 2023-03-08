@@ -133,6 +133,7 @@
     <Compile Include="Assets\Xmpp\Sasl\Plain\PlainMechanism.cs" />
     <Compile Include="Assets\Xmpp\protocol\extensions\pubsub\owner\PubSub.cs" />
     <Compile Include="Assets\Xmpp\protocol\extensions\featureneg\FeatureNeg.cs" />
+    <Compile Include="Assets\Scripts\Chat\FriendItem.cs" />
     <Compile Include="Assets\Xmpp\protocol\extensions\compression\Compress.cs" />
     <Compile Include="Assets\Xmpp\Jid.cs" />
     <Compile Include="Assets\Xmpp\protocol\iq\privacy\Default.cs" />
@@ -338,6 +339,7 @@
     <Compile Include="Assets\Xmpp\Sasl\DigestMD5\Step2.cs" />
     <Compile Include="Assets\Xmpp\protocol\iq\vcard\Name.cs" />
     <Compile Include="Assets\Xmpp\Xml\Dom\NodeList.cs" />
+    <Compile Include="Assets\Scripts\Chat\PrivateConversation.cs" />
     <Compile Include="Assets\Xmpp\Net\Dns\Question.cs" />
     <Compile Include="Assets\Xmpp\protocol\extensions\commands\Action.cs" />
     <Compile Include="Assets\Xmpp\protocol\server\Presence.cs" />
@@ -394,6 +396,7 @@
     <Compile Include="Assets\Xmpp\MessageGrabber.cs" />
     <Compile Include="Assets\Xmpp\IO\Compression\InflaterDynHeader.cs" />
     <Compile Include="Assets\Xmpp\protocol\iq\private\PrivateIq.cs" />
+    <Compile Include="Assets\Scripts\Chat\ConversationItem.cs" />
     <Compile Include="Assets\Xmpp\IO\Compression\Checksums\Adler32.cs" />
     <Compile Include="Assets\Xmpp\protocol\extensions\pubsub\SubscribeOptions.cs" />
     <Compile Include="Assets\Xmpp\protocol\client\Handler.cs" />
