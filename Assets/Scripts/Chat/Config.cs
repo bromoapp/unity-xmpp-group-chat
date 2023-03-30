@@ -13,5 +13,6 @@
         public static string XMLNS_MUC_USER = "http://jabber.org/protocol/muc#user";
 
         public static string MUC_MSG_KEYWORD = "conference";
+        public static string GLOBAL_MUC_JID = "global@conference";
     }
 }
