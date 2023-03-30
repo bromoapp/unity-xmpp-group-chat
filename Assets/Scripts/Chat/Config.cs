@@ -14,5 +14,7 @@
 
         public static string MUC_MSG_KEYWORD = "conference";
         public static string GLOBAL_MUC_JID = "global@conference";
+
+        public static int GLOBAL_MUC_CACHE_SIZE = 5;
     }
 }

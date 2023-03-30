@@ -100,8 +100,7 @@ public class XmppChatManager : MonoBehaviour
     // ----- Attributes in regards to Global group chat;
     private string globalChatJid = "";
     private bool joinGlobalChat = false;
-    private bool hasJoinedGlobalChat = false;
-    private static LinkedList<Message> globalGroupMessages;
+    private static LinkedList<Message> globalGroupConversation;
 
     /************************************************************************
      * Private Chat related attributes
@@ -147,14 +146,14 @@ public class XmppChatManager : MonoBehaviour
         if (peoplePresenceUpdates == null || incomingGroupMessages == null ||
             groupsThatHasNewMessage == null || sentQueryIds == null ||
             receivedQueryResults == null || groupChatsList == null ||
-            globalGroupMessages == null || receivedGroupPresences == null ||
+            globalGroupConversation == null || receivedGroupPresences == null ||
             groupPeoplesList == null)
         {
             // ----- Initiate all static attributes
             groupPeoplesList = new Dictionary<string, PeopleInfo>();
             receivedGroupPresences = new LinkedList<Presence>();
             incomingGroupMessages = new LinkedList<Message>();
-            globalGroupMessages = new LinkedList<Message>();
+            globalGroupConversation = new LinkedList<Message>();
             groupsThatHasNewMessage = new List<string>();
             peoplePresenceUpdates = new List<Presence>();
             groupChatsList = new LinkedList<GroupInfo>();
@@ -298,7 +297,7 @@ public class XmppChatManager : MonoBehaviour
                     // ----- clear onscreen group conversation and populate it with cached global chat
                     onScreenGroupConversation.Jid = selectedGroupJid;
                     onScreenGroupConversation.Messages.Clear();
-                    foreach (Message msg in globalGroupMessages)
+                    foreach (Message msg in globalGroupConversation)
                     {
                         onScreenGroupConversation.Messages.AddLast(msg);
                     }
@@ -331,12 +330,6 @@ public class XmppChatManager : MonoBehaviour
                     GroupChatText.text = "Group: " + Util.ParseGroupFromJid(presence.From.Bare).Name;
                     onScreenGroupConversation = new GroupConversation(onScreenGroupJid);
                     renderOnScreenGroupConversation = true;
-
-                    // ----- if presence JID equals to Global group JID, set hasJoinedGlobalChat = true
-                    if (presence.From.ToString().StartsWith(Config.GLOBAL_MUC_JID))
-                    {
-                        hasJoinedGlobalChat = true;
-                    }
                 }
             }
             receivedGroupPresences.Clear();
@@ -411,17 +404,17 @@ public class XmppChatManager : MonoBehaviour
                         // ----- If the onscreen group chat happens to be the Global chat
                         // ----- store the message to cache and renders it to screen
                         onScreenGroupConversation.Messages.AddLast(msg);
-                        globalGroupMessages.AddLast(msg);
+                        addMessageToGlobalGroupConversation(msg);
                     }
                     else
                     {
                         // ----- If the onscreen group chat is not the Global chat
                         // ----- store the message to cache, and don't render it to screen
-                        globalGroupMessages.AddLast(msg);
+                        addMessageToGlobalGroupConversation(msg);
                         renderMessage = false;
                         incomingGroupMessages.Clear();
                     }
-                    Debug.LogFormat(">>> TOTAL MSG IN CACHE: {0}", globalGroupMessages.Count);
+                    Debug.LogFormat(">>> TOTAL MSG IN CACHE: {0}", globalGroupConversation.Count);
                 }
                 else
                 {
@@ -789,6 +782,7 @@ public class XmppChatManager : MonoBehaviour
     /************************************************************************
      * Group Chat Helper functions
      ************************************************************************/
+    #region << Group Chat related helper functions >>
     private void queryAllAccessibleRooms()
     {
         string qid = Util.GenerateRandomMsgId();
@@ -828,9 +822,19 @@ public class XmppChatManager : MonoBehaviour
         conn.Send(presence);
     }
 
+    private void addMessageToGlobalGroupConversation(Message msg)
+    {
+        globalGroupConversation.AddLast(msg);
+        if (globalGroupConversation.Count > Config.GLOBAL_MUC_CACHE_SIZE)
+        {
+            globalGroupConversation.RemoveFirst();
+        }
+    }
+    #endregion
     /************************************************************************
      * Private Chat Helper functions
      ************************************************************************/
+    #region << Private Chat related helper functions >>
     private void addMessageToOnScreenPrivateConversation(string jid, Message msg)
     {
         if (privateConversations.ContainsKey(jid))
@@ -897,5 +901,6 @@ public class XmppChatManager : MonoBehaviour
     {
         component.text = "Chat with: " + profile.FirstName + " " + profile.LastName;
     }
+    #endregion
     #endregion
 }
